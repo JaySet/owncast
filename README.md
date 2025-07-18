@@ -39,7 +39,7 @@
   - 🚨 [Important note about source code and the develop branch](#important-note-about-source-code-and-the-develop-branch)
   - 🗄️ [Backend](#backend)
   - ⚛️ [Frontend](#frontend)
-  -  [部署](#部署)
+- 📒 [部署](#部署)
 - 👏 [Contributing](#contributing)
   - 💵 [Donors](#donors)
 - 📝 [License](#license)
@@ -123,32 +123,19 @@ The frontend is the web interface that includes the player, chat, embed componen
 ## 部署
 
 ### 1.部署也超简单：
-
-Docker + Dockge 面板 → 粘贴 compose → 起飞）
-
+（Docker + Dockge 面板 → 粘贴 compose → 起飞）
 #### 1. 准备docker-compose.yaml
      1234567891011
-		 
-     version:"3.4"
-		 
+     version:"3.4" 
      services:
-		 
      owncast:
-		 
      image: gabekangas/owncast:latest
-		 
      container_name: owncast
-		 
      restart:unless-stopped
-		 
-     ports:
-		 
-     -"1935:1935"# RTMP推流端口
-		 
-     -"8080:8080"# 网页访问端口
-		 
+     ports:	 
+     -"1935:1935"# RTMP推流端口 
+     -"8080:8080"# 网页访问端口 
      volumes:
-		 
      -./data:/app/data
    
 ##### 2. Dockge部署步骤
