@@ -119,6 +119,45 @@ The frontend is the web interface that includes the player, chat, embed componen
 1. Run `npm install` to install the Javascript dependencies.
 1. Run `npm run dev`
 
+## 部署
+
+1.部署也超简单：
+Docker + Dockge 面板 → 粘贴 compose → 起飞）
+
+1. 准备docker-compose.yaml
+     1234567891011
+     version:"3.4"
+     services:
+     owncast:
+     image: gabekangas/owncast:latest
+     container_name: owncast
+     restart:unless-stopped
+     ports:
+     -"1935:1935"# RTMP推流端口
+     -"8080:8080"# 网页访问端口
+     volumes:
+     -./data:/app/data
+2. Dockge部署步骤
+打开Dockge面板 -> 创建堆栈 -> 设置堆栈名称 -> 粘贴compose代码 -> 30 秒启动成功！
+1.点击“+Compose”--->2.在选框中设置堆栈名称--->3.在右侧粘贴compose代码（如果需要设置环境变量，需要将其粘贴在下方）--->4.点击堆栈名称上方的部署按钮。
+3.实战演示
+1. OBS推流设置
+在OBS设置中填入服务器地址（格式：rtmp://你的IP:1935/live）和密钥（默认密码 adb123），实测1080P画质下CPU占用不到15%！
+2. 观众端功能
+•网页观看地址：http://你的IP:8090
+•实时弹幕互动（支持修改昵称）
+•管理后台：http://你的IP:8090/admin （记得修改默认密码）
+推流设置？超简单！
+OBS设置一填，rtmp://你的IP:1935/live，推流码默认：adb123
+🔧还能怎么玩？
+域名反代 ➕ HTTPS，像模像样
+CDN加速 ➕ 云存储，高能护航
+REST API ➕ 在线人数 ➕ 直播监控，全都安排！
+如果你也厌倦了平台收割，那就用 Owncast，造自己的“直播宇宙”！
+🔥 自建服务器，快乐开播，从今天开始！
+顺手送你一个超强 docker 教程仓库：
+https://github.com/TWO-ICE/Awesome-NAS-Docker
+
 ## Contributing
 
 Owncast is a growing open source project that is giving freedom, flexibility and fun to live streamers.
